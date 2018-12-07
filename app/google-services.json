@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "282068466660",
+    "firebase_url": "https://postification-5fd58.firebaseio.com",
+    "project_id": "postification-5fd58",
+    "storage_bucket": "postification-5fd58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282068466660:android:b4d7b54d54d7eb64",
+        "android_client_info": {
+          "package_name": "com.postification.postification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282068466660-91pf5n82oec8gvktvngj3lrn37ik0dn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqrltPPYePnII8gyZRHBFSCfap7LRTuQ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
