@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //Firebase Database
     implementation 'com.google.firebase:firebase-database:16.0.5'
-
+    //firebasemessagingを追加
     implementation "com.google.firebase:firebase-messaging:17.3.4"
 }
 
