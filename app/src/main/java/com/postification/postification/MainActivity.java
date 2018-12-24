@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        ////Firebase Database
-        DatabaseReference myRef = database.getReference("message");
-        myRef.setValue("Hello, World!");
+        //Firebase Database
+        DatabaseReference myRef = database.getReference("/Post/weight");
+        myRef.setValue(4649);
 
 
     }
