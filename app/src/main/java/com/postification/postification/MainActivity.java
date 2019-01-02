@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String id="id_postification_test";
     private String name="name_postification_test";
+    private GetData getData=new GetData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         //Firebase Database
         DatabaseReference myRef = database.getReference("/Post/weight");
         myRef.setValue(4649);
+
+        getData.getPost();
 
 
     }
