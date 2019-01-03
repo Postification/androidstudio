@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String id="id_postification_test";
     private String name="name_postification_test";
+    private GetData getData=new GetData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        ////Firebase Database
-        DatabaseReference myRef = database.getReference("message");
-        myRef.setValue("Hello, World!");
+        getData.getPost();
 
 
     }
