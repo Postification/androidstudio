@@ -6,8 +6,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
-import static android.content.ContentValues.TAG;
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
