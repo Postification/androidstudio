@@ -1,5 +1,6 @@
 package com.postification.postification;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,11 +16,12 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-    private TextView textView;
-    private Button button;
-    private String id="id_postification_test";
-    private String name="name_postification_test";
-    private ChangeLayoutActivity changeLayoutActivity=new ChangeLayoutActivity();
+    TextView textView;
+    Button button;
+    String id="id_postification_test";
+    String name="name_postification_test";
+    ProgressDialog progressDialog;
+    ChangeLayoutActivity changeLayoutActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        //Firebase Database
-        //DatabaseReference myRef = database.getReference("/Post/weight/");
-        //myRef.setValue(4649);
-
+        changeLayoutActivity=new ChangeLayoutActivity();
         changeLayoutActivity.mainLayout(button);
 
         button.setOnClickListener(new View.OnClickListener() {
