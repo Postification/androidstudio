@@ -16,7 +16,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.d("fcmToken", "Refreshed token: " + token);
 
         //Firebase Database
-        DatabaseReference myRef = database.getReference("/Users/token");
+        DatabaseReference myRef = database.getReference("/user/user1/token");
         myRef.setValue(token);
 
         // If you want to send messages to this application instance or
