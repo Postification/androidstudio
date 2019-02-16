@@ -37,10 +37,10 @@ public class ListFragment extends Fragment {
         ListView listView=activity.findViewById(R.id.listView);
 
         //初期値代入
-        baggage.setName("荷物");
-        baggage.setTime("0");
-        baggage.setWeight(0);
-        for(int i=0;i<5;i++){
+        baggage.setName("");
+        baggage.setTime("");
+        baggage.setWeight("");
+        for(int i=0;i<10;i++){
             list.add(baggage);
         }
 
@@ -59,11 +59,12 @@ public class ListFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i;
-                for(i=1;i<6;i++){
+                for(i=1;i<=10;i++){
                     String childAdrr="baggage"+String.valueOf(i);
                     Baggage baggage=new Baggage();
                     String time = dataSnapshot.child(childAdrr).child("time").getValue(String.class);
-                    int weight = dataSnapshot.child(childAdrr).child("weight").getValue(int.class);
+                    int intWeight = dataSnapshot.child(childAdrr).child("weight").getValue(int.class);
+                    String weight=String.valueOf(intWeight);
 
                     baggage.setName("荷物"+String.valueOf(i));
                     baggage.setTime(time);

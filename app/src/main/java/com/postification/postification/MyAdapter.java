@@ -41,7 +41,7 @@ public class MyAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.baggage_list,parent,false);
 
         ((TextView)convertView.findViewById(R.id.name)).setText(baggagesList.get(position).getName());
-        ((TextView)convertView.findViewById(R.id.weight)).setText(String.valueOf(baggagesList.get(position).getWeight()));
+        ((TextView)convertView.findViewById(R.id.weight)).setText(baggagesList.get(position).getWeight());
         ((TextView)convertView.findViewById(R.id.time)).setText((baggagesList.get(position).getTime()));
 
         return convertView;

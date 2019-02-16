@@ -4,7 +4,7 @@ public class Baggage {
 
     long id;
     private String name;
-    private int weight;
+    private String weight;
     private String time;
 
     public long getId() {
@@ -23,11 +23,11 @@ public class Baggage {
         this.name=name;
     }
 
-    public int getWeight(){
+    public String getWeight(){
         return weight;
     }
 
-    public void setWeight(int weight){
+    public void setWeight(String weight){
         this.weight=weight;
     }
 

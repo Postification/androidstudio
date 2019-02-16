@@ -32,7 +32,6 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Activity activity=getActivity();
-
         button=activity.findViewById(R.id.button);
 
         changeButtonText();
@@ -42,9 +41,8 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Fragment listFragment = new ListFragment();
                 FragmentTransaction fragmentTransaction =getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentLayout, listFragment);
+                fragmentTransaction.replace(R.id.fragmentLayout, listFragment,"宅配物");
                 fragmentTransaction.commit();
-
             }
         });
     }
