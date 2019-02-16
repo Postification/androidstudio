@@ -6,12 +6,10 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
             android:checkable="true"
             android:title="件数" />
         <item
             android:id="@+id/nav_baggage"
-            android:icon="@drawable/ic_menu_camera"
             android:checkable="true"
             android:title="宅配物" />
     </group>
@@ -20,14 +18,8 @@
         <menu android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_setting"
-                android:icon="@drawable/ic_menu_share"
                 android:checkable="true"
                 android:title="設定" />
-            <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_send"
-                android:checkable="true"
-                android:title="このアプリについて" />
         </menu>
     </item>
 

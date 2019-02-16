@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity
                 fragment =new SettingFragment();
             }
             navigationView.getMenu().getItem(2).setChecked(true);
-
-        } else if (id == R.id.nav_about) {
-
         }
 
         fragmentTransaction.replace(R.id.fragmentLayout, fragment,fragmentName);
