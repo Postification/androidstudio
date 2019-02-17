@@ -13,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notif_post" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/darkgray" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -22,11 +28,6 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ListFragment"
-            android:label="@string/app_name">
         </activity>
 
         <service android:name=".MyFirebaseMessagingService">
