@@ -5,45 +5,86 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
 
+    private int quantity=0;
+    private int receive=-1;
     Context context;
-    LayoutInflater layoutInflater ;
-    ArrayList<Baggage> baggagesList=null;
+    private String weight;
+    private LayoutInflater layoutInflater ;
+    private ArrayList<Baggage> baggageList=null;
+    private int baggageSize=0;
 
     public MyAdapter(Context context,ArrayList<Baggage> baggageList) {
         this.context = context;
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.baggagesList=baggageList;
+        this.baggageList=baggageList;
     }
 
     @Override
     public int getCount() {
-        return baggagesList.size();
+        return baggageList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return baggagesList.get(position);
+        return baggageList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return baggagesList.get(position).getId();
+        return baggageList.get(position).getId();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(R.layout.baggage_list,parent,false);
 
-        ((TextView)convertView.findViewById(R.id.name)).setText(baggagesList.get(position).getName());
-        ((TextView)convertView.findViewById(R.id.weight)).setText(baggagesList.get(position).getWeight());
-        ((TextView)convertView.findViewById(R.id.time)).setText((baggagesList.get(position).getTime()));
+        baggageSize=baggageList.get(position).getIntWeight();
+        weight=baggageList.get(position).getWeight()+" [g]";
+
+        if(quantity!=0&&position==0){
+            convertView = layoutInflater.inflate(R.layout.receive_baggage_list,parent,false);
+            ((TextView)convertView.findViewById(R.id.receive)).setText("未受取");
+            ((TextView)convertView.findViewById(R.id.name)).setText(baggageList.get(position).getName());
+            ((TextView)convertView.findViewById(R.id.weight)).setText(weight);
+            ((TextView)convertView.findViewById(R.id.time)).setText((baggageList.get(position).getTime()));
+
+        }else if(quantity==0||receive==position){
+            convertView = layoutInflater.inflate(R.layout.receive_baggage_list,parent,false);
+            ((TextView)convertView.findViewById(R.id.receive)).setText("受取済");
+            ((TextView)convertView.findViewById(R.id.name)).setText(baggageList.get(position).getName());
+            ((TextView)convertView.findViewById(R.id.weight)).setText(weight);
+            ((TextView)convertView.findViewById(R.id.time)).setText((baggageList.get(position).getTime()));
+            receive=position;
+        }else{
+            convertView = layoutInflater.inflate(R.layout.baggage_list,parent,false);
+            ((TextView)convertView.findViewById(R.id.name)).setText(baggageList.get(position).getName());
+            ((TextView)convertView.findViewById(R.id.weight)).setText(weight);
+            ((TextView)convertView.findViewById(R.id.time)).setText((baggageList.get(position).getTime()));
+        }
+
+        setImageView(baggageSize,convertView);
+        quantity--;
 
         return convertView;
+    }
+
+    public void setImageView(int size,View view){
+        if(baggageSize<50){
+            ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_small);
+        }else if(baggageSize<100){
+            ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_medium);
+        }else{
+            ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_big);
+        }
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity=quantity;
     }
 }

@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,9 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainFragment extends Fragment {
 
-    Button button;
+    ImageView imageView;
     Toolbar toolbar;
     NavigationView navigationView;
+    TextView textView;
 
 
     @Override
@@ -37,11 +40,12 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         final Activity activity = getActivity();
-        button = activity.findViewById(R.id.button);
+        imageView= activity.findViewById(R.id.imageView);
+        textView=activity.findViewById(R.id.textView_Nitem);
 
         changeButtonText();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
@@ -67,7 +71,7 @@ public class MainFragment extends Fragment {
                 int quantity = dataSnapshot.getValue(int.class);
                 Log.d("GetData Succesful", "quantity=" + quantity);
 
-                button.setText(String.valueOf(quantity));
+                textView.setText(String.valueOf(quantity));
             }
 
             @Override

@@ -53,17 +53,19 @@ public class ListFragment extends Fragment {
 
     public void changeList(final ArrayList<Baggage> list, final MyAdapter myAdapter){
 
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("/Post/list/");
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("/Post/");
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i;
+                int receive=dataSnapshot.child("quantity").getValue(int.class);
                 for(i=1;i<=10;i++){
                     String childAdrr="baggage"+String.valueOf(i);
                     Baggage baggage=new Baggage();
-                    String time = dataSnapshot.child(childAdrr).child("time").getValue(String.class);
-                    int intWeight = dataSnapshot.child(childAdrr).child("weight").getValue(int.class);
+                    String time = dataSnapshot.child("list").child(childAdrr).child("time").getValue(String.class);
+                    int intWeight = dataSnapshot.child("list").child(childAdrr).child("weight").getValue(int.class);
+                    baggage.setIntWeight(intWeight);
                     String weight=String.valueOf(intWeight);
 
                     baggage.setName("荷物"+String.valueOf(i));
@@ -72,6 +74,7 @@ public class ListFragment extends Fragment {
 
                     list.set(i-1,baggage);
                 }
+                myAdapter.setQuantity(receive);
                 myAdapter.notifyDataSetChanged();
 
             }
