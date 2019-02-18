@@ -70,8 +70,9 @@ public class MainFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int quantity = dataSnapshot.getValue(int.class);
                 Log.d("GetData Succesful", "quantity=" + quantity);
+                String text=String.valueOf(quantity)+" 件";
 
-                textView.setText(String.valueOf(quantity));
+                textView.setText(text);
             }
 
             @Override
