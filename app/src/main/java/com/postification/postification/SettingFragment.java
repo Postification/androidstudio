@@ -5,11 +5,12 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends Fragment implements TextView.OnEditorActionListener {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static final String  databaseName = "setting";
@@ -39,10 +40,8 @@ public class SettingFragment extends Fragment {
 
         Switch switchButton = activity.findViewById(R.id.notifSwitch);
 
-        final EditText moreBig=activity.findViewById(R.id.moreBigEditText);
-        final EditText moreMedium=activity.findViewById(R.id.moreMediumEditText);
-        final EditText lessMedium=activity.findViewById(R.id.lessMediumEditText);
-        final EditText lessSmall=activity.findViewById(R.id.lessSmallEditText);
+        final EditText bigEditText=activity.findViewById(R.id.bigEditText);
+        final EditText smallEditText=activity.findViewById(R.id.smallEditText);
 
         String bigText,smallText;
         SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
@@ -50,10 +49,8 @@ public class SettingFragment extends Fragment {
 
         bigText=String.valueOf(data.getInt("list_size_big",300));
         smallText=String.valueOf(data.getInt("list_size_small",50));
-        moreBig.setText(bigText, TextView.BufferType.NORMAL);
-        moreMedium.setText(smallText, TextView.BufferType.NORMAL);
-        lessMedium.setText(bigText, TextView.BufferType.NORMAL);
-        lessSmall.setText(smallText, TextView.BufferType.NORMAL);
+        bigEditText.setText(bigText, TextView.BufferType.NORMAL);
+        smallEditText.setText(smallText, TextView.BufferType.NORMAL);
 
         // switchのオンオフが切り替わった時の処理を設定
         switchButton.setOnCheckedChangeListener(
@@ -81,98 +78,59 @@ public class SettingFragment extends Fragment {
                 }
         );
 
-        //editTextの変更に対しての処理
-
-        //moreBigの変更
-        moreBig.addTextChangedListener(new TextWatcher() {
-            SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
-            Editor editor = data.edit();
-
+        smallEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String text=String.valueOf(s);
-                int n= Integer.parseInt(text);
-                editor.putInt("list_size_big", n);
-                editor.apply();
-
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    Log.e("onEditorAction","call");
+                    SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
+                    Editor editor = data.edit();
+                    String text=String.valueOf(v.getText());
+                    int n=Integer.parseInt(text);
+                    editor.putInt("list_size_big", n);
+                    editor.apply();
+                }
+                return false;
             }
         });
 
-        //moreMediumの変更
-        moreMedium.addTextChangedListener(new TextWatcher() {
-            SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
-            Editor editor = data.edit();
+    }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                String text=String.valueOf(s);
-                int n= Integer.parseInt(text);
-                editor.putInt("list_size_small", n);
-                editor.apply();
-            }
-        });
 
-        //lessMediumの変更
-        lessMedium.addTextChangedListener(new TextWatcher() {
-            SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
-            Editor editor = data.edit();
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                String text=String.valueOf(s);
-                int n= Integer.parseInt(text);
+
+
+
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event){
+        Activity activity=getActivity();
+        SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
+        Editor editor = data.edit();
+        String text;
+        int n;
+        Log.e("onEditorAction","call");
+
+        if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT){
+            if(v.getId()==R.id.bigEditText){
+                Log.e("bigEditText","call");
+                text=String.valueOf(v.getText());
+                n=Integer.parseInt(text);
                 editor.putInt("list_size_big", n);
                 editor.apply();
             }
-        });
-
-        //lessSmallの変更
-        lessSmall.addTextChangedListener(new TextWatcher() {
-            SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
-            Editor editor = data.edit();
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String text=String.valueOf(s);
-                int n= Integer.parseInt(text);
+            else if(v.getId()==R.id.smallEditText){
+                Log.e("smallEditText","call");
+                text=String.valueOf(v.getText());
+                n=Integer.parseInt(text);
                 editor.putInt("list_size_small", n);
                 editor.apply();
             }
-        });
+        }
 
-
-
+        return false;
     }
 }

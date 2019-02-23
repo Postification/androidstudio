@@ -85,7 +85,7 @@ public class MyAdapter extends BaseAdapter {
     }
 
     private void setImageView(int size,View view){
-        if(baggageSize<smallSize){
+        if(baggageSize<=smallSize){
             ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_small);
         }else if(baggageSize<bigSize){
             ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_medium);
