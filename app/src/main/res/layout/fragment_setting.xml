@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.229" />
 
     <Switch
-        android:id="@+id/notif_switch"
+        android:id="@+id/notifSwitch"
         android:layout_width="44dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.089999974" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/moreBigEditText"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -154,12 +154,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/moreBigEditText"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.44" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/lessMediumEditText"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -172,11 +172,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/moreBigEditText"
         app:layout_constraintVertical_bias="0.006" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/moreMediumEditText"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -189,7 +189,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/moreBigEditText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -204,7 +204,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText4"
+        app:layout_constraintStart_toEndOf="@+id/moreMediumEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.100000024" />
 
@@ -220,12 +220,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText3"
+        app:layout_constraintStart_toEndOf="@+id/lessMediumEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.100000024" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/lessSmallEditText"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -238,7 +238,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/moreMediumEditText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -253,7 +253,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText5"
+        app:layout_constraintStart_toEndOf="@+id/lessSmallEditText"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.13999999" />
 

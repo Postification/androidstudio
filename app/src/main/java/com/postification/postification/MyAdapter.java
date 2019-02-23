@@ -1,6 +1,8 @@
 package com.postification.postification;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +21,19 @@ public class MyAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater ;
     private ArrayList<Baggage> baggageList=null;
     private int baggageSize=0;
+    private Activity activity;
+    private int bigSize,smallSize;
+    private static final String  databaseName = "setting";
 
-    public MyAdapter(Context context,ArrayList<Baggage> baggageList) {
+    MyAdapter(Context context, ArrayList<Baggage> baggageList, Activity activity) {
         this.context = context;
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.baggageList=baggageList;
+        this.activity=activity;
+
+        SharedPreferences data = activity.getSharedPreferences(databaseName,Context.MODE_PRIVATE);
+        bigSize=data.getInt("list_size_big",300);
+        smallSize=data.getInt("list_size_small",50);
     }
 
     @Override
@@ -74,10 +84,10 @@ public class MyAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void setImageView(int size,View view){
-        if(baggageSize<50){
+    private void setImageView(int size,View view){
+        if(baggageSize<smallSize){
             ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_small);
-        }else if(baggageSize<100){
+        }else if(baggageSize<bigSize){
             ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_medium);
         }else{
             ((ImageView)view.findViewById(R.id.imageView)).setImageResource(R.drawable.circle_big);

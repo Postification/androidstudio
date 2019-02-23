@@ -45,7 +45,7 @@ public class ListFragment extends Fragment {
         }
 
         Context context=this.getActivity().getBaseContext();
-        MyAdapter myAdapter=new MyAdapter(context,list);
+        MyAdapter myAdapter=new MyAdapter(context,list,activity);
         listView.setAdapter(myAdapter);
 
         changeList(list,myAdapter);
